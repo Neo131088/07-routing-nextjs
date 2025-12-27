@@ -1,10 +1,14 @@
 import axios from 'axios';
 import { Note, NoteFormValues, NoteTag } from '@/types/note';
 
-const NOTEHUB_TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
+const token = process.env.NOTEHUB_TOKEN;
+
+if (!token) {
+  throw new Error('NOTEHUB_TOKEN is missing');
+}
 
 axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
-axios.defaults.headers.common['Authorization'] = `Bearer ${NOTEHUB_TOKEN}`;
+axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 axios.defaults.timeout = 2000;
 export interface FetchNotesParams {
   search: string;
