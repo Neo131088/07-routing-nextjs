@@ -2,9 +2,9 @@ import axios from 'axios';
 import { Note, NoteFormValues, NoteTag } from '@/types/note';
 
 function getToken() {
-  const token = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
+  const token = process.env.NOTEHUB_TOKEN;
   if (!token) {
-    throw new Error('NEXT_PUBLIC_NOTEHUB_TOKEN is missing');
+    throw new Error('NOTEHUB_TOKEN is missing');
   }
   return token;
 }
